@@ -15,7 +15,7 @@
  */
 #pragma once
 
-typedef char byte;
+typedef unsigned char byte;
 typedef unsigned long uint32;
 
 ///

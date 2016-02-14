@@ -23,8 +23,11 @@
 
 #include "targetver.h"
 
+#include <codecvt>
 #include <iostream>
 #include <fstream>
+#include <locale>
+#include <memory>
 #include <stdio.h>
 #include <string>
 #include <tchar.h>
