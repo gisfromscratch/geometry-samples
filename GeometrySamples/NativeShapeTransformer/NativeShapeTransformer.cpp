@@ -191,6 +191,78 @@ static const char* convertWkbFileToWkt(const char *file)
 }
 
 
+/**
+* Reads the file containing WKB point geometries and converts them to a file containing the Esri shape representation.
+* @param file the path to the file.
+* @return the file path to the output file.
+*/
+static const char* convertWkbFileToShape(const char *file)
+{
+	// Define the input byte stream
+	typedef std::basic_ifstream<byte, std::char_traits<byte> > uifstream;
+
+	uifstream inputStream(file, std::ios::binary);
+	if (!inputStream)
+	{
+		std::cerr << file << " is not accessible!" << std::endl;
+		return nullptr;
+	}
+
+	// Define the output byte stream
+	typedef std::basic_ofstream<byte, std::char_traits<byte> > uofstream;
+
+	std::string outFile(file);
+	std::size_t index = outFile.find_last_of('.');
+	if (std::string::npos != index)
+	{
+		outFile.replace(outFile.begin() + index, outFile.end(), ".shape");
+	}
+	else
+	{
+		outFile += ".shape";
+	}
+
+	uofstream outputStream(outFile, std::ios::binary);
+	if (!outputStream)
+	{
+		std::cerr << outFile << " is not writable!" << std::endl;
+		return nullptr;
+	}
+
+	WKBPoint wkbPoint;
+	EsriPoint esriPoint;
+	esriPoint.shapeType = esriGeometryType::esriPoint;
+	esriPoint.point.X = 0;
+	esriPoint.point.Y = 0;
+	while (inputStream.good() && outputStream.good())
+	{
+		// Read the WKB representation
+		if (!inputStream.read(reinterpret_cast<byte*>(&wkbPoint.byteOrder), 1))
+		{
+			break;
+		}
+		inputStream.read(reinterpret_cast<byte*>(&wkbPoint.wkbType), 4);
+		inputStream.read(reinterpret_cast<byte*>(&wkbPoint.point.X), 8);
+		inputStream.read(reinterpret_cast<byte*>(&wkbPoint.point.Y), 8);
+
+		esriPoint.point.X = wkbPoint.point.X;
+		esriPoint.point.Y = wkbPoint.point.Y;
+
+		// Write the Esri shape representation
+		outputStream.write(reinterpret_cast<byte*>(&esriPoint.shapeType), 4);
+		outputStream.write(reinterpret_cast<byte*>(&esriPoint.point.X), 8);
+		outputStream.write(reinterpret_cast<byte*>(&esriPoint.point.Y), 8);
+	}
+
+	outputStream.flush();
+
+	size_t pathBufferSize = outFile.length() + sizeof(char);
+	char *outFilePath = new char[pathBufferSize];
+	strcpy_s(outFilePath, pathBufferSize, outFile.c_str());
+	return outFilePath;
+}
+
+
 
 int main(int argc, char *args[])
 {
@@ -254,6 +326,12 @@ int main(int argc, char *args[])
 
 	std::unique_ptr<const char> wktFile(convertWkbFileToWkt(wkbFile.get()));
 	if (nullptr == wktFile)
+	{
+		return -1;
+	}
+
+	std::unique_ptr<const char> shapeFile(convertWkbFileToShape(wkbFile.get()));
+	if (nullptr == shapeFile)
 	{
 		return -1;
 	}

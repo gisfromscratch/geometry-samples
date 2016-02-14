@@ -17,6 +17,7 @@
 
 typedef unsigned char byte;
 typedef unsigned long uint32;
+typedef long int32;
 
 ///
 /// Two dimensional point.
@@ -27,7 +28,7 @@ struct Point {
 };
 
 ///
-/// The geometry type.
+/// The WKB geometry type.
 ///
 enum wkbGeometryType {
 	wkbPoint = 1,
@@ -40,7 +41,7 @@ enum wkbGeometryType {
 };
 
 ///
-/// The byte order.
+/// The WKB byte order.
 ///
 enum wkbByteOrder {
 	wkbXDR = 0, // Big Endian
@@ -53,5 +54,34 @@ enum wkbByteOrder {
 struct WKBPoint {
 	byte byteOrder;
 	uint32 wkbType;
+	Point point;
+};
+
+
+///
+/// The Esri geometry type.
+///
+enum esriGeometryType {
+	esriNullShape = 0,
+	esriPoint = 1,
+	esriPolyline = 3,
+	esriPolygon = 5,
+	esriMultiPoint = 8,
+	esriPointZ = 11,
+	esriPolylineZ = 13,
+	esriPolygonZ = 15,
+	esriMultiPointZ = 18,
+	esriPointM = 21,
+	esriPolylineM = 23,
+	esriPolygonM = 25,
+	esriMultiPointM = 28,
+	esriMultiPatch = 31
+};
+
+///
+/// Two dimensional point as Shape.
+///
+struct EsriPoint {
+	esriGeometryType shapeType;
 	Point point;
 };
