@@ -24,6 +24,7 @@
 #include "targetver.h"
 
 #include <codecvt>
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <locale>

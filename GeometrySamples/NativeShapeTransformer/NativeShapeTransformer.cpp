@@ -164,6 +164,7 @@ static const char* convertWkbFileToWkt(const char *file)
 		std::cerr << outFile << " is not writable!" << std::endl;
 		return nullptr;
 	}
+	outputStream << std::setprecision(13);
 
 	WKBPoint wkbPoint;
 	while (inputStream.good() && outputStream.good())
