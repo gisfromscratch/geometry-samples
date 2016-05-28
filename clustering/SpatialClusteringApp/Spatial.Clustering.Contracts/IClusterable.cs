@@ -13,7 +13,7 @@
         /// <summary>
         /// Gets the value in the specified dimension (index).
         /// </summary>
-        /// <param name="dimension">The dimension of the value.</param>
+        /// <param name="dimension">The dimension of the value starting at <code>0</code>.</param>
         /// <returns>The value representing the element.</returns>
         double GetValue(uint dimension);
     }
