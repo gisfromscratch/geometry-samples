@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F36AE6D1-BB21-4749-9530-1AAA935070B8}</ProjectGuid>
+    <ProjectGuid>{918CF9C5-224F-450B-90D0-FC397FA86FE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Spatial.Clustering.Contracts</RootNamespace>
-    <AssemblyName>Spatial.Clustering.Contracts</AssemblyName>
+    <RootNamespace>Spatial.Clustering.Algorithms</RootNamespace>
+    <AssemblyName>Spatial.Clustering.Algorithms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICluster.cs" />
-    <Compile Include="IClusterable.cs" />
-    <Compile Include="ICusterer.cs" />
-    <Compile Include="IClusterDistanceCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spatial.Clustering.Contracts\Spatial.Clustering.Contracts.csproj">
+      <Project>{f36ae6d1-bb21-4749-9530-1aaa935070b8}</Project>
+      <Name>Spatial.Clustering.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

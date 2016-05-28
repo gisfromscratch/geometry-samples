@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Spatial.Clustering.Contracts
+﻿namespace Spatial.Clustering.Contracts
 {
     /// <summary>
     /// Represents an element which can be used for creating a cluster.
@@ -8,8 +6,15 @@ namespace Spatial.Clustering.Contracts
     public interface IClusterable
     {
         /// <summary>
-        /// The values which should be used for calculating the distance.
+        /// The dimension (number of values) of this element.
         /// </summary>
-        IEnumerable<double> Values { get; }
+        uint Dimension { get; }
+
+        /// <summary>
+        /// Gets the value in the specified dimension (index).
+        /// </summary>
+        /// <param name="dimension">The dimension of the value.</param>
+        /// <returns>The value representing the element.</returns>
+        double GetValue(uint dimension);
     }
 }

@@ -1,16 +1,18 @@
-﻿namespace Spatial.Clustering.Contracts
+﻿using System.Collections.Generic;
+
+namespace Spatial.Clustering.Contracts
 {
     /// <summary>
-    /// Provides clustering methods.
+    /// Provides a clustering method.
     /// </summary>
     public interface IClusterer
     {
         /// <summary>
-        /// Calculates the distance between two elements.
+        /// Creates clusters of elements.
         /// </summary>
-        /// <param name="element">An element.</param>
-        /// <param name="otherElement">Another element.</param>
-        /// <returns>The distance between those two elements.</returns>
-        double CalculateDistance(IClusterable element, IClusterable otherElement);
+        /// <param name="elements">The elements to cluster.</param>
+        /// <param name="elementCount">The number of clusters.</param>
+        /// <returns>Clusters of elements.</returns>
+        IEnumerable<ICluster> CreateClusters(IEnumerable<IClusterable> elements, uint clusterCount);
     }
 }

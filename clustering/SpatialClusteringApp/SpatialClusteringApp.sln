@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpatialClusteringApp", "Spa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spatial.Clustering.Contracts", "Spatial.Clustering.Contracts\Spatial.Clustering.Contracts.csproj", "{F36AE6D1-BB21-4749-9530-1AAA935070B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spatial.Clustering.Algorithms", "Spatial.Clustering.Algorithms\Spatial.Clustering.Algorithms.csproj", "{918CF9C5-224F-450B-90D0-FC397FA86FE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F36AE6D1-BB21-4749-9530-1AAA935070B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36AE6D1-BB21-4749-9530-1AAA935070B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36AE6D1-BB21-4749-9530-1AAA935070B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918CF9C5-224F-450B-90D0-FC397FA86FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918CF9C5-224F-450B-90D0-FC397FA86FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918CF9C5-224F-450B-90D0-FC397FA86FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918CF9C5-224F-450B-90D0-FC397FA86FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
