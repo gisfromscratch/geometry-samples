@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SpatialClusteringApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GeonamesFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\Geonames\geonames_20160119_CntryFiles\ch.txt</Value>
+    </Setting>
+    <Setting Name="Delimiter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\t</Value>
+    </Setting>
+    <Setting Name="StartRowIndex" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="XTokenIndex" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="YTokenIndex" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="ClusterCount" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -6,9 +6,10 @@
 		Height="350" 
 		Width="525">
     <Grid>
-		<esri:MapView x:Name="MyMapView"
-					  LayerLoaded="MyMapView_LayerLoaded">
-			<esri:Map>
+        <esri:MapView x:Name="MapView"
+					  LayerLoaded="MapView_LayerLoaded"
+                      PropertyChanged="MapView_PropertyChanged">
+            <esri:Map x:Name="FocusMap">
 				<esri:ArcGISTiledMapServiceLayer ID="Basemap"
 					ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
 			</esri:Map>

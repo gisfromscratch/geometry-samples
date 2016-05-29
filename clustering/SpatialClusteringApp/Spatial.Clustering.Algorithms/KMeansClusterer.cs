@@ -59,8 +59,13 @@ namespace Spatial.Clustering.Algorithms
 
             var clusters = CreateRandomClusters(elementsAsList, clusterCountAsInt);
             AssignElementsToClusters(elementsAsList, clusters);
-            while (UpdateClustersCenter(clusters))
+            var maxIterationCount = 1E3;
+            for (var iteration = 0; iteration < maxIterationCount; iteration++)
             {
+                if (UpdateClustersCenter(clusters))
+                {
+                    break;
+                }
                 foreach (var cluster in clusters)
                 {
                     cluster.RemoveAll();
