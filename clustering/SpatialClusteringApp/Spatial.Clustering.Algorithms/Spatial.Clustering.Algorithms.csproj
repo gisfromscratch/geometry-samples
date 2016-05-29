@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EuclideanDistanceCalculator.cs" />
+    <Compile Include="KMeansClusterer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleCluster.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spatial.Clustering.Contracts\Spatial.Clustering.Contracts.csproj">
