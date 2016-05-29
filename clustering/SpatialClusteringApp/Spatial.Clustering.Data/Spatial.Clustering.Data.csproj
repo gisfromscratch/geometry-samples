@@ -43,6 +43,7 @@
     <Compile Include="ClusterPoint.cs" />
     <Compile Include="ClusterPointTextFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleClusterElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spatial.Clustering.Contracts\Spatial.Clustering.Contracts.csproj">

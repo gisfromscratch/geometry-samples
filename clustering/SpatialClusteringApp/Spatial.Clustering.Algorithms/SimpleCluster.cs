@@ -39,6 +39,16 @@ namespace Spatial.Clustering.Algorithms
             }
         }
 
+        /// <summary>
+        /// Removes all elements from this cluster.
+        /// </summary>
+        internal void RemoveAll()
+        {
+            _elements.Clear();
+        }
+
+        public IClusterable Center { get; internal set; }
+
         public IEnumerable<IClusterable> Elements
         {
             get { return _elements; }

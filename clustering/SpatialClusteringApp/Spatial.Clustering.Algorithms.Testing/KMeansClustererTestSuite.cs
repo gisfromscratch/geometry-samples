@@ -24,11 +24,18 @@ namespace Spatial.Clustering.Algorithms.Testing
             Assert.IsNotNull(clusters, @"The clusters must not be null!");
 
             uint clusterCount = 0;
+            int expectedElementCount = elements.Count;
+            int elementCount = 0;
             foreach (var cluster in clusters)
             {
                 clusterCount++;
+                foreach (var element in cluster.Elements)
+                {
+                    elementCount++;
+                }
             }
             Assert.AreEqual(expectedClusterCount, clusterCount, @"The cluster count was not expected!");
+            Assert.AreEqual(expectedElementCount, elementCount, @"The element count was not expected!");
         }
 
         [TestMethod]
