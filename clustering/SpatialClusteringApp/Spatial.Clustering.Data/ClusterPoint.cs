@@ -8,6 +8,29 @@ namespace Spatial.Clustering.Data
     /// </summary>
     public class ClusterPoint : IClusterable
     {
+        /// <summary>
+        /// Creates a new point having x and y coordinates.
+        /// </summary>
+        public ClusterPoint()
+        {
+            X = double.NaN;
+            Y = double.NaN;
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return double.IsNaN(X) || double.IsNaN(Y);
+            }
+        }
+
+        public void SetEmpty()
+        {
+            X = double.NaN;
+            Y = double.NaN;
+        }
+
         public uint Dimension
         {
             get
