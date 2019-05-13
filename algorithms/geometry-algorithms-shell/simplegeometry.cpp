@@ -21,7 +21,7 @@
 #include "simplespatialreference.h"
 
 SimpleGeometry::SimpleGeometry(const SimpleSpatialReference &spatialReference)
-    : _spatialReference(&spatialReference)
+    : _spatialReference(spatialReference)
 {
 }
 
@@ -34,7 +34,7 @@ SimplePoint2d::SimplePoint2d(const SimpleSpatialReference &spatialReference, dou
 std::string SimplePoint2d::toString() const
 {
     std::stringstream builder;
-    builder << _spatialReference->toString();
+    builder << _spatialReference.toString();
     builder << std::endl << "Point:";
     builder << "{x:" << _x << ",y:" << _y << "}";
     return builder.str();

@@ -20,7 +20,7 @@
 
 #include <string>
 
-class SimpleSpatialReference;
+#include "simplespatialreference.h"
 
 class SimpleGeometry
 {
@@ -29,7 +29,7 @@ public:
 
 protected:
     SimpleGeometry(const SimpleSpatialReference &spatialReference);
-    const SimpleSpatialReference *_spatialReference;
+    SimpleSpatialReference _spatialReference;
 };
 
 class SimplePoint2d : public SimpleGeometry
