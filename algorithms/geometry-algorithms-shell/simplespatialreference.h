@@ -21,6 +21,7 @@
 #include <string>
 
 enum SimpleWkid {
+    Unknown = 0,
     WGS1984 = 4326
 };
 
@@ -28,7 +29,7 @@ class SimpleSpatialReference
 {
 public:
     SimpleSpatialReference(SimpleWkid wkid);
-    std::string toString();
+    std::string toString() const;
 
 private:
     SimpleWkid _wkid;

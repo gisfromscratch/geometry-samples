@@ -23,7 +23,7 @@ SimpleSpatialReference::SimpleSpatialReference(SimpleWkid wkid)
 {
 }
 
-std::string SimpleSpatialReference::toString()
+std::string SimpleSpatialReference::toString() const
 {
     std::stringstream builder;
     builder << "The wkid is " << _wkid << ".";

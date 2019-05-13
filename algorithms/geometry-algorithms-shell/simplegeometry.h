@@ -18,10 +18,28 @@
 #ifndef SIMPLEGEOMETRY_H
 #define SIMPLEGEOMETRY_H
 
+#include <string>
+
+class SimpleSpatialReference;
+
 class SimpleGeometry
 {
 public:
-    SimpleGeometry();
+    virtual std::string toString() const = 0;
+
+protected:
+    SimpleGeometry(const SimpleSpatialReference &spatialReference);
+    const SimpleSpatialReference *_spatialReference;
+};
+
+class SimplePoint2d : public SimpleGeometry
+{
+public:
+    SimplePoint2d(const SimpleSpatialReference &spatialReference, double x, double y);
+    virtual std::string toString() const;
+
+private:
+    double _x,_y;
 };
 
 #endif // SIMPLEGEOMETRY_H
