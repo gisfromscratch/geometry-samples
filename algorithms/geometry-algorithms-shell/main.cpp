@@ -24,10 +24,12 @@ int main()
     auto wgs84 = SimpleSpatialReference(SimpleWkid::WGS1984);
     cout << wgs84.toString() << endl;
 
-    cout << sizeof(wgs84) << "-" << 4 *sizeof(int) << endl;
+    cout << sizeof(wgs84) << "-" << 4*sizeof(int) << "-" << 3*sizeof(int) << endl;
 
     auto location = SimplePoint2d(wgs84, 10, 53);
     cout << location.toString() << endl;
+
+    cout << sizeof(location) << endl;
 
     auto point = createWgs84Point(13, 51);
     cout << point.toString() << endl;
@@ -35,6 +37,10 @@ int main()
     geometries.push_back(location);
     geometries.push_back(point);
 
+    SimpleLineSegment2d lineSegment(location, point);
+    cout << lineSegment.toString() << endl;
+
+    cout << sizeof(lineSegment) << endl;
     }
 
     for (auto &&geometry : geometries)

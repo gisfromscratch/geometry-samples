@@ -25,6 +25,11 @@ SimpleGeometry::SimpleGeometry(const SimpleSpatialReference &spatialReference)
 {
 }
 
+SimpleSpatialReference SimpleGeometry::spatialReference() const
+{
+    return _spatialReference;
+}
+
 
 SimplePoint2d::SimplePoint2d(const SimpleSpatialReference &spatialReference, double x, double y)
     : SimpleGeometry(spatialReference), _x(x), _y(y)
@@ -37,5 +42,20 @@ std::string SimplePoint2d::toString() const
     builder << _spatialReference.toString();
     builder << std::endl << "Point:";
     builder << "{x:" << _x << ",y:" << _y << "}";
+    return builder.str();
+}
+
+
+SimpleLineSegment2d::SimpleLineSegment2d(const SimplePoint2d &start, const SimplePoint2d &end)
+    : SimpleGeometry(start.spatialReference()), _start(start), _end(end)
+{
+}
+
+std::string SimpleLineSegment2d::toString() const
+{
+    std::stringstream builder;
+    builder << _spatialReference.toString();
+    builder << std::endl << "Line segment:";
+    builder << "{Start:" << _start.toString() << ",End:" << _end.toString() << "}";
     return builder.str();
 }

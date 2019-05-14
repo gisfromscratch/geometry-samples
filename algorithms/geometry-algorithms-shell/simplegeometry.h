@@ -25,12 +25,14 @@
 class SimpleGeometry
 {
 public:
+    SimpleSpatialReference spatialReference() const;
     virtual std::string toString() const = 0;
 
 protected:
     SimpleGeometry(const SimpleSpatialReference &spatialReference);
     SimpleSpatialReference _spatialReference;
 };
+
 
 class SimplePoint2d : public SimpleGeometry
 {
@@ -40,6 +42,18 @@ public:
 
 private:
     double _x,_y;
+};
+
+
+class SimpleLineSegment2d : public SimpleGeometry
+{
+public:
+    SimpleLineSegment2d(const SimplePoint2d &start, const SimplePoint2d &end);
+    virtual std::string toString() const;
+
+private:
+    const SimplePoint2d &_start;
+    const SimplePoint2d &_end;
 };
 
 #endif // SIMPLEGEOMETRY_H
