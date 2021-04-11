@@ -234,3 +234,9 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# CMAKE outputs
+out/
+
+# Eclipse settings
+.settings/
