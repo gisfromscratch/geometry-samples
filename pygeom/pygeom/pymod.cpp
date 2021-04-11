@@ -32,9 +32,19 @@ static bool load_features_wkt(const vector<string>& features)
     return true;
 }
 
+static bool load_features_wkb(const vector<unsigned char*>& features)
+{
+    for (const unsigned char* wkb : features)
+    {
+        cout << "WKB" << endl;
+    }
+    return true;
+}
+
 PYBIND11_MODULE(geo, py_module)
 {
     py_module.doc() = "Geometry module for various geospatial workflows.";
 
-    py_module.def("load_features_wkt", &load_features_wkt, "Load features represented as WKT.");
+    py_module.def("from_wkt", &load_features_wkt, "Load features represented as WKT.");
+    py_module.def("from_wkb", &load_features_wkb, "Load features represented as WKB.");
 }
