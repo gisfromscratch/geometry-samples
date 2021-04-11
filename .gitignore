@@ -240,3 +240,6 @@ out/
 
 # Eclipse settings
 .settings/
+
+# Python caches
+__pycache__
