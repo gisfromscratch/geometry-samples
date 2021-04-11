@@ -20,6 +20,11 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include <geos/geom.h>
+#include <geos/io/WKBReader.h>
+
+using namespace geos::io;
+using namespace pybind11;
 using namespace std;
 
 static bool load_features_wkt(const vector<string>& features)
@@ -32,12 +37,21 @@ static bool load_features_wkt(const vector<string>& features)
     return true;
 }
 
-static bool load_features_wkb(const vector<unsigned char*>& features)
+static bool load_features_wkb(const vector<bytes>& features)
 {
-    for (const unsigned char* wkb : features)
+    WKBReader wkb_reader;
+    for (const bytes& wkb : features)
     {
-        cout << "WKB" << endl;
+        buffer_info wkb_info(buffer(wkb).request());
+        unsigned char* wkb = reinterpret_cast<unsigned char*>(wkb_info.ptr);
+        size_t wkb_size = static_cast<size_t>(wkb_info.size);
+        string wkb_text(reinterpret_cast<char*>(wkb), wkb_size);
+        stringstream wkb_stream;
+        wkb_stream << wkb_text;
+        unique_ptr<Geometry> geometry = wkb_reader.read(wkb_stream);
+        cout << geometry->toText() << endl;
     }
+
     return true;
 }
 
