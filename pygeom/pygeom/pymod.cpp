@@ -22,9 +22,14 @@
 
 using namespace std;
 
-static void load_features_wkt(const vector<string>& features)
+static bool load_features_wkt(const vector<string>& features)
 {
+    for (const string& wkt : features)
+    {
+        cout << wkt << endl;
+    }
 
+    return true;
 }
 
 PYBIND11_MODULE(geo, py_module)
